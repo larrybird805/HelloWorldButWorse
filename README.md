@@ -20,9 +20,6 @@ Ever wondered how much water would get trapped between hills if Mother Nature pl
 Just copy-paste this bad boy into your JavaScript project:  
 
 ```js
-var trap = h => {
-    let l = 0, r = h.length - 1, lm = 0, rm = 0, w = 0;
-    while (l < r) h[l] < h[r] ? (lm = Math.max(lm, h[l]), w += lm - h[l++]) : (rm = Math.max(rm, h[r]), w += rm - h[r--]);
-    return w;
-};
+var t = h => { let l = 0, r = h.length - 1, lm = 0, rm = 0, w = 0; while (l < r) h[l] < h[r] ? (lm = Math.max(lm, h[l]), w += lm - h[l++]) : (rm = Math.max(rm, h[r]), w += rm - h[r--]); return w; };
+
 
