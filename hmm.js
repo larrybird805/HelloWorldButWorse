@@ -1,15 +1,24 @@
 var trap = function(h) {
-    let l = 0, r = h.length - 1, lm = 0, rm = 0, w = 0;
-    
-    while (l < r) {
-        if (h[l] < h[r]) {
-            lm = Math.max(lm, h[l]);
-            w += lm - h[l++];
+    let left = 0, right = h.length - 1;
+    let leftMax = 0, rightMax = 0, water = 0;
+
+    // Use two pointers, moving inward from both ends
+    while (left < right) {
+        // Work with the smaller height to ensure we find the limiting boundary
+        if (h[left] < h[right]) {
+            // Update leftMax to the larger value encountered so far
+            leftMax = Math.max(leftMax, h[left]);
+            // Add water trapped at the current position
+            water += leftMax - h[left];
+            left++;
         } else {
-            rm = Math.max(rm, h[r]);
-            w += rm - h[r--];
+            // Update rightMax to the larger value encountered so far
+            rightMax = Math.max(rightMax, h[right]);
+            // Add water trapped at the current position
+            water += rightMax - h[right];
+            right--;
         }
     }
-    
-    return w;
+
+    return water;
 };
